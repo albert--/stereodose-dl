@@ -6,7 +6,7 @@ Stereodose.com user playlist downloader written in Python 3
 
 example:
 
-`python stereodose-dl.py https://www.stereodose.com/user_playlist/8436/road-trip`
+`python stereodose-dl.py https://www.stereodose.com/user_playlist/7953/road-trip`
 
 ###Installation
 - tl;dr `pip install requests wget mutagen beautifulsoup4`
@@ -26,3 +26,17 @@ or
   - Genre (Campfire, Chill, etc.)
   - Cover (If there is no cover the avatar of the SoundCloud user is used)
 - Resume downloads
+
+###Changelog
+
+- #####1.0.1
+  - Fix album cover error (thanks @yakumaa)
+
+- #####1.0
+  - Release
+
+###Todo
+- Add error handling
+  - Playlist not found
+  - No link given
+  - ?
