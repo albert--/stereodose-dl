@@ -1,5 +1,5 @@
 # stereodose-dl
-# v1.0
+# v1.0.1
 # albert--@github
 
 import wget, json, requests, mutagen, sys, glob
