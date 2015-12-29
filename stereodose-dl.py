@@ -13,7 +13,7 @@ link = str(sys.argv[1])
 client_id = '8febd4179e4b98ccc312f9bfe21a5c8f'
 r = requests.get(link)
 
-soup = BeautifulSoup(r.text)
+soup = BeautifulSoup(r.text, "html.parser")
 album = soup.title.string.split('|')[0].strip()
 script = soup.findAll('script')[1].string
 
@@ -97,13 +97,16 @@ for song in songs:
     file.save()
 
     if songs[song]['pic'] is not None:
-        pic = wget.download(songs[song]['pic'])
-        tag = MP3(filename, ID3=ID3)
-        imgfile = open(pic, 'rb').read()
-        img = APIC(3, 'image/jpeg', 3, 'Cover', imgfile)
-        tag.tags.add(img)
-        tag.save(v2_version=3) # id3v2.3 because windows
-        remove(pic)
+        try:
+            pic = wget.download(songs[song]['pic'])
+            tag = MP3(filename, ID3=ID3)
+            imgfile = open(pic, 'rb').read()
+            img = APIC(3, 'image/jpeg', 3, 'Cover', imgfile)
+            tag.tags.add(img)
+            tag.save(v2_version=3) # id3v2.3 because windows
+            remove(pic)
+        except:
+            pass
 
     status.seek(0)
     status.write(str(song))
